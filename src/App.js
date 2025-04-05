@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Sidesection from './components/Sidesection';
+import SideSection from './components/SideSection';
 import MainSection from './components/MainSection';
 import { createContext, useCallback, useState } from 'react';
 
@@ -19,7 +19,7 @@ function App() {
   return (
     <FilterContext.Provider value={data}>
     <div className="App flex flex-row mt-4">
-    <Sidesection filter={filter} setFilter={setFilter}/>
+    <SideSection filter={filter} setFilter={setFilter}/>
     <MainSection filter={filter} setFilter={setFilter} />
     </div>
     </FilterContext.Provider>

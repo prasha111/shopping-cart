@@ -11,21 +11,33 @@ function MainSection({filter={}, setFilter=()=>{}}) {
     console.log()
     //const im = "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
     const [data, setData] = useState([]);
-    useEffect(()=>{
-         productApi().then((res)=>{
+    const productData = ()=>{
+        productApi().then((res)=>{
             setData(res)
             console.log(res)
         }).catch(()=>{
 
         })
+    }
+    useEffect(()=>{
+        productData()
         
-        setData()
+        //setData()
     }, [])
     const change = (value)=>{
         setValue(value.target.value)
         console.log(value.target.value)
-        let data1 = data.filter((p)=>p?.title?.includes(value.target.value))
-        setData(data1)
+        if(value.target.value === "") {
+            productApi()
+        }
+        else{
+            let data1 = data.filter((p)=>p?.title?.toLowerCase().includes(value.target.value.toLowerCase()))
+        
+            setData(data1)
+
+        }
+    
+
     }
     
 console.log(filter.category, "f")
